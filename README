@@ -1,0 +1,53 @@
+#### HDL Coder IP Core Workflow Board Support Packages ####
+
+This is a collection of board support packages (board definitions and 
+reference designs) for the HDL Coder IP Core workflow.
+
+The respository is structured as follows:
+vendor/                 <-- vendor directories
+    <vendor name>       <-- vendor specific folder
+        <vendor files>  <-- vendor content
+
+
+This structure allows files from different vendors to remain segregated.
+
+For example:
+vendor/
+    Avnet/                                  <-- Avnet specific folder
+        +Avnet/                             <-- Avnet namespace
+            +MicroZed/                      <-- MicroZed namespace
+        Contents.m                          <-- Contents file for Avnet
+        hdlcoder_board_customization.m      <-- Avnet board definitions
+        README                              <-- Avnet README
+
+
+Within each vendor folder, there should install/uninstall file to
+add/remove files from the MATLAB path. The install files should appear
+within the vendor namespace. For example:
+vendor/
+    Avnet/
+        +Avnet/
+            install.m
+            uninstall.m
+
+To install the Avnet files, you would perform the following in MATLAB
+
+>> cd vendor/Avnet % Assumes you are already in the root of the repository
+>> Avnet.install % Add the necessary folders to the MATLAB path
+
+To later uninstall the Avnet files, you would perform the following:
+
+>> Avnet.uninstall % Remove the Avnet folders from the MATLAB path
+
+Once installed, the vendor's BSP should be visible with the "ver" command:
+
+>> ver
+----------------------------------------------------------------------------------------------------
+MATLAB Version: 8.5.0.197613 (R2015a)
+MATLAB License Number: 365450
+Operating System: Microsoft Windows 7 Enterprise  Version 6.1 (Build 7601: Service Pack 1)
+Java Version: Java 1.7.0_60-b19 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+----------------------------------------------------------------------------------------------------
+...
+HDL Coder BSP: Avnet                                  Version 1.00       (R2015a)
+...

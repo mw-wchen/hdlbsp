@@ -1,0 +1,6 @@
+* text=auto
+
+*.xdc text eol=lf
+*.tcl text eol=lf
+*.m text eol=lf
+*.slx binary
